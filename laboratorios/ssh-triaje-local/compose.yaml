@@ -1,0 +1,14 @@
+name: ssh-triaje-local
+
+services:
+  ssh:
+    build: .
+    image: ssh-triaje-local:8.5p1
+    init: true
+    ports:
+      - "127.0.0.1:2222:22"
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    logging:
+      driver: local

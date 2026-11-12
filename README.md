@@ -8,6 +8,7 @@ Cada caso presenta el objetivo, el método, los resultados documentados, su inte
 
 | Laboratorio | Enfoque | Resultado y alcance |
 | --- | --- | --- |
+| [Triaje SOC de intentos de acceso SSH](laboratorios/ssh-triaje-local/README.md) | Registros reales de OpenSSH en un laboratorio local, triaje del caso prioritario y regla de detección | La ráfaga de cinco fallos seguida de un acceso se abrió como P2 y se clasificó como verdadero positivo benigno. Durante el montaje se detectó y corrigió que `DisableForwarding` no bloqueaba el reenvío de agente. |
 | [Grafana: exposición de métricas y retest](laboratorios/grafana.md) | Acceso HTTP sin sesión y comprobación posterior | `/metrics` pasó de HTTP 200 a 404 desde el origen de prueba. No se verificó el mecanismo interno de la corrección. |
 | [OpenSearch Dashboards: autenticación y superficie HTTP](laboratorios/opensearch.md) | Rutas privadas, estadísticas públicas y cabeceras | Las rutas privadas comprobadas exigieron autenticación mediante 401/302; se documentaron excepciones públicas y oportunidades de endurecimiento. |
 | [Wazuh: enrolamiento de agentes y límites de confianza](laboratorios/wazuh.md) | Registro, comunicación y política de admisión | Se documentó entrega de material de enrolamiento y comunicación de una identidad. La política de admisión y la recepción de eventos en el manager siguen pendientes de validar. |
@@ -21,7 +22,7 @@ Cada caso presenta el objetivo, el método, los resultados documentados, su inte
 
 ## Evidencia y limitaciones
 
-Los informes publicados son versiones saneadas de la documentación aportada por el operador del laboratorio. **Los archivos originales de las pruebas —capturas, respuestas HTTP, logs y anexos de Kali— no están adjuntos a este repositorio.**
+Los informes publicados son versiones saneadas de la documentación aportada por el operador del laboratorio. **En Grafana, OpenSearch y Wazuh, los archivos originales de las pruebas —capturas, respuestas HTTP, logs y anexos de Kali— no están adjuntos a este repositorio.** El laboratorio SSH sí incluye extractos saneados de sus registros.
 
 Los resultados se presentan como evidencia documental; no se repitieron las pruebas para preparar esta publicación. La ausencia de un hallazgo en las solicitudes examinadas no acredita la seguridad de todo el sistema. El enrolamiento de un agente no demuestra por sí solo recepción ni indexación de eventos, ni una vulnerabilidad del producto.
 
@@ -35,6 +36,7 @@ Los ejemplos solo deben utilizarse en sistemas propios o con autorización expre
 
 ```text
 laboratorios/
+├── ssh-triaje-local/
 ├── grafana.md
 ├── opensearch.md
 └── wazuh.md
